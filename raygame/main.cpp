@@ -1,6 +1,6 @@
 #include "include/raylib.h"
 #include <stdlib.h>
-#include <synchapi.h>
+#include <synchapi.h> // for Sleep()
 
 // g++ main.cpp -o game.exe -O1 -Wall -std=c99 -Wno-missing-braces -I include/ -L lib/ -lraylib -lopengl32 -lgdi32 -lwinmm -lpthread
 
