@@ -1,5 +1,6 @@
 #include "include/raylib.h"
 #include <stdlib.h>
+#include <synchapi.h>
 
 // g++ main.cpp -o game.exe -O1 -Wall -std=c99 -Wno-missing-braces -I include/ -L lib/ -lraylib -lopengl32 -lgdi32 -lwinmm -lpthread
 
@@ -35,7 +36,7 @@ struct paddle {
 };
 
 int main(int argc, char *argv[]) {
-	InitWindow(1200, 850, "jnPong");  //jnBaw//
+	InitWindow(1200, 850, "jnPong");  // jnBaw
 	SetTargetFPS(120);
 
 	int scoreL, scoreR;
@@ -143,12 +144,18 @@ int main(int argc, char *argv[]) {
 			ball.x = (GetScreenWidth() / 2);
 			ball.y = (GetScreenHeight() / 2);
 			padR.score += 1;
+			Sleep((DWORD)2000);
+			valx = 1;
+			valy = 1;
 
 		}
 		if (CheckCollisionCircleRec((Vector2) { ball.x, ball.y }, ball.radius, rightGoal)) {
 			ball.x = (GetScreenWidth()  / 2);
 			ball.y = (GetScreenHeight() / 2);
 			padL.score += 1;
+			Sleep((DWORD)2000);
+			valx = -1;
+			valy = 1;
 		}
 	}
 
