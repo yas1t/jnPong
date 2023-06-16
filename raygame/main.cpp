@@ -1,8 +1,6 @@
 #include "include/raylib.h"
 #include <stdlib.h>
-#include <synchapi.h> // for Sleep()
-
-// g++ main.cpp -o game.exe -O1 -Wall -std=c99 -Wno-missing-braces -I include/ -L lib/ -lraylib -lopengl32 -lgdi32 -lwinmm -lpthread
+#include <synchapi.h> //retar
 
 struct ball {
 	float x, y;
@@ -126,18 +124,10 @@ int main(int argc, char *argv[]) {
 		IsKeyDown(KEY_UP)   ? padR.y -= 3 : 0;
 		IsKeyDown(KEY_DOWN) ? padR.y += 3 : 0;
 
-		if (CheckCollisionCircleRec((Vector2) {ball.x, ball.y}, ball.radius, padR.getRect())) {
-			valx *= -1;
-		}
-		if (CheckCollisionCircleRec((Vector2) { ball.x, ball.y }, ball.radius, padL.getRect())) {
-			valx *= -1;
-		}
-		if (CheckCollisionCircleRec((Vector2) { ball.x, ball.y }, ball.radius, bottom)) {
-			valy *= -1;
-		}
-		if (CheckCollisionCircleRec((Vector2) { ball.x, ball.y }, ball.radius, top)) {
-			valy *= -1;
-		}
+		if (CheckCollisionCircleRec((Vector2) {ball.x, ball.y}, ball.radius, padR.getRect())) valx *= -1;
+		if (CheckCollisionCircleRec((Vector2) { ball.x, ball.y }, ball.radius, padL.getRect())) valx *= -1;
+		if (CheckCollisionCircleRec((Vector2) { ball.x, ball.y }, ball.radius, bottom))	valy *= -1;
+		if (CheckCollisionCircleRec((Vector2) { ball.x, ball.y }, ball.radius, top)) valy *= -1;
 		
 		// goals //
 		if (CheckCollisionCircleRec((Vector2) { ball.x, ball.y }, ball.radius, leftGoal)) {
